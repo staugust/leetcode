@@ -6,9 +6,11 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import re
 
-TRAIN_PATH="D:\\kaggle\\titanic\\train.csv"
-TEST_PATH="D:\\kaggle\\titanic\\test.csv"
-GENDER_PATH="D:\\kaggle\\titanic\\gender_submission.csv"
+from sklearn import linear_model
+
+TRAIN_PATH = "D:\\kaggle\\titanic\\train.csv"
+TEST_PATH = "D:\\kaggle\\titanic\\test.csv"
+GENDER_PATH = "D:\\kaggle\\titanic\\gender_submission.csv"
 
 # f = open("D:\\kaggle\\titanic\\ptrain.csv","w+")
 #
@@ -47,8 +49,57 @@ GENDER_PATH="D:\\kaggle\\titanic\\gender_submission.csv"
 # np.ndarray.max()
 # np.amax()
 
-e = pd.read_csv("D:\\kaggle\\titanic\\ptrain.csv", sep=',')
-print(e.shape)
+mp = {'S':1,'C':2,'Q':3}
 
-print(e.head(1))
-print(type(e))
+def tfm(df):
+    """
+    :type df: pandas.core.frame.DataFrame
+    :return: numpy.ndarray
+    """
+    df.fillna(value=0.0, inplace=True)
+    X = np.zeros([len(df), 7], dtype=np.float64)
+    for i in range(len(df)):
+        X[i][0] = df.Pclass[i]
+        X[i][1] = 1 if df.Sex[i] == 'male' else 0
+        X[i][2] = df.Age[i]
+        X[i][3] = df.SibSp[i]
+        X[i][4] = df.Parch[i]
+        X[i][5] = df.Fare[i]
+        X[i][6] = mp[df.Embarked[i]] if df.Embarked[i] in mp else 0
+    return X
+
+
+df = pd.read_csv(TRAIN_PATH, sep=',', na_values=0.0)
+df.fillna(value=0.0, inplace=True)
+model = linear_model.LinearRegression()
+#  'Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked'
+X = np.zeros([len(df), 7], dtype=np.float64)
+for i in range(len(df)):
+    X[i][0] = df.Pclass[i]
+    X[i][1] = 1 if df.Sex[i] == 'male' else 0
+    X[i][2] = df.Age[i]
+    X[i][3] = df.SibSp[i]
+    X[i][4] = df.Parch[i]
+    X[i][5] = df.Fare[i]
+    X[i][6] = mp[df.Embarked[i]] if df.Embarked[i] in mp else 0
+
+
+# 'Survived'
+y = np.array(df.Survived.tolist())
+
+model.fit(X, y)
+
+pdf = pd.read_csv(TEST_PATH)
+parr = tfm(pdf)
+
+res = model.predict(parr)
+
+THRESHOLD = 0.35
+
+pRes = [1 if i > 0.35 else 0 for i in res]
+
+pdf['Survived'] = pRes
+
+print(pdf)
+pdf.to_csv('D:\\kaggle\\titanic\\res.csv', columns=['PassengerId','Survived'], index=False)
+
