@@ -1,6 +1,9 @@
 import os
 import argparse
 
+import traitlets as ts
+ts.CUnicode('Ni').tag(sync=True)
+
 def reverse_str(s):
     if not isinstance(s, str):
         return None

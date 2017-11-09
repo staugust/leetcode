@@ -106,3 +106,6 @@ python/.idea
 java/.idea
 java/java.iml
 java/out
+
+jupyter_skydata/js/dist
+jupyter_skydata/js/node_modules

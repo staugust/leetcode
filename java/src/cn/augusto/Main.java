@@ -45,6 +45,16 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+        
+        Class clz = Tick.class;
+        try {
+            Tick s2 = (Tick) clz.getDeclaredConstructors()[0].newInstance(3);
+            new Thread(s2).start();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
         Base<Task> b = new Base<Task>();
         
         Task s = new Task();
