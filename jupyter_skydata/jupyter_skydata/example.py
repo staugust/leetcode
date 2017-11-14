@@ -1,5 +1,5 @@
 import ipywidgets as widgets
-from traitlets import List,Unicode, observe
+from traitlets import List, Unicode, observe, CInt
 from IPython.display import display_html
 import json
 import inspect
@@ -67,6 +67,7 @@ class ListDisplay(widgets.DOMWidget):
     def __init__(self, *args, **kwargs):
         super(ListDisplay, self).__init__(**kwargs)
         self.model = args[0]
+        args[0].model = self.model
 
     @observe('model')
     def _model_changed(self, change):
@@ -83,5 +84,29 @@ class ListDisplayWrapper(object):
         return f
 
 
+class NumDisplay(widgets.DOMWidget):
+    _view_name = Unicode('HelloView').tag(sync=True)
+    _model_name = Unicode('HelloModel').tag(sync=True)
+    _view_module = Unicode('jupyter_skydata').tag(sync=True)
+    _model_module = Unicode('jupyter_skydata').tag(sync=True)
+    _view_module_version = Unicode('^0.1.0').tag(sync=True)
+    _model_module_version = Unicode('^0.1.0').tag(sync=True)
+    model = CInt().tag(sync=True)
+
+    def __init__(self, *args, **kwargs):
+        super(ListDisplay, self).__init__(**kwargs)
+        self.model = args[0]
+        args[0].model = self.model
+
+
+class NumDisplayWrapper(object):
+    def __get__(self, instance, owner):
+        def f():
+            display_html(NumDisplay(instance))
+        return f
+
 class AugList(list):
+    pass
+
+class AugInt(int):
     pass

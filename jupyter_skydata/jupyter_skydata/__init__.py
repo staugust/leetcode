@@ -12,5 +12,6 @@ def _jupyter_nbextension_paths():
 
 
 list = AugList
-#list._ipython_display_ = ListDisplayWrapper()
+int = AugInt
 AugList._ipython_display_ = ListDisplayWrapper()
+AugInt._ipython_display_ = NumDisplayWrapper()
