@@ -11,4 +11,5 @@ def _jupyter_nbextension_paths():
     }]
 
 
-list._ipython_display_ = ListDisplayWrapper()
+#list._ipython_display_ = ListDisplayWrapper()
+List._ipython_display_ = ListDisplayWrapper()

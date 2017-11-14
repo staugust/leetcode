@@ -98,3 +98,4 @@ class ListDisplayWrapper(object):
         def f():
             display_html(ListDisplay(model_instance))
         return f
+
