@@ -68,14 +68,6 @@ class ListDisplay(widgets.DOMWidget):
         super(ListDisplay, self).__init__(**kwargs)
         self.model = args[0]
 
-
-    @observe('rlist')
-    def _list_changed(self,change):
-        if change['new'] is None:
-            return
-        self.model = change['new']
-
-
     @observe('model')
     def _model_changed(self, change):
         if change['new'] is None:
@@ -86,6 +78,7 @@ class ListDisplay(widgets.DOMWidget):
 class ListDisplayWrapper(object):
     def __get__(self, model_instance, model_class):
         def f():
+            print(type(model_instance))
             display_html(ListDisplay(model_instance))
         return f
 
