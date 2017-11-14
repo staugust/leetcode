@@ -10,6 +10,6 @@ def _jupyter_nbextension_paths():
         'require': 'jupyter_skydata/extension'
     }]
 
-
+list = AugList
 #list._ipython_display_ = ListDisplayWrapper()
-List._ipython_display_ = ListDisplayWrapper()
+AugList._ipython_display_ = ListDisplayWrapper()

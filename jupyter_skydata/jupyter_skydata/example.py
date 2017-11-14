@@ -63,34 +63,24 @@ class ListDisplay(widgets.DOMWidget):
     _view_module_version = Unicode('^0.1.0').tag(sync=True)
     _model_module_version = Unicode('^0.1.0').tag(sync=True)
     model = List().tag(sync=True)
-    rlist = None
 
     def __init__(self, *args, **kwargs):
         super(ListDisplay, self).__init__(**kwargs)
-        self.model = List(args[0])
-        rlist = args[0]
+        self.model = args[0]
 
 
     @observe('rlist')
     def _list_changed(self,change):
         if change['new'] is None:
             return
-        self.model = List(change['new'])
+        self.model = change['new']
 
 
     @observe('model')
     def _model_changed(self, change):
         if change['new'] is None:
             return
-        if self.rlist:
-            self.rlist.clear()
-            for item in self.model:
-                self.rlist.append(item)
-
-
-
-
-
+        self.model = change['new']
 
 
 class ListDisplayWrapper(object):
@@ -99,3 +89,6 @@ class ListDisplayWrapper(object):
             display_html(ListDisplay(model_instance))
         return f
 
+
+class AugList(list):
+    pass
