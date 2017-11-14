@@ -94,7 +94,7 @@ class NumDisplay(widgets.DOMWidget):
     model = CInt().tag(sync=True)
 
     def __init__(self, *args, **kwargs):
-        super(ListDisplay, self).__init__(**kwargs)
+        super(NumDisplay, self).__init__(**kwargs)
         self.model = args[0]
         args[0].model = self.model
 
