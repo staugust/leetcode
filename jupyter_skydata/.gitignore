@@ -10,3 +10,5 @@ jupyter_skydata/static/
 
 # OS X
 .DS_Store
+
+.idea
