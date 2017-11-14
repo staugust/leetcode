@@ -9,7 +9,7 @@ class ListEncoder(json.JSONEncoder):
         if hasattr(o, '__dict__'):
             d = dict(
                 (key,value)
-                for key, value inspect.getmembers(obj)
+                for key, value in inspect.getmembers(o)
                 if value is not None
                 and not key == "Position"
                 and not key == "colorProvider"
