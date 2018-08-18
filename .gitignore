@@ -102,6 +102,8 @@ ENV/
 
 
 # Augusto
+.idea
+*.iml
 python/.idea
 java/.idea
 java/java.iml
