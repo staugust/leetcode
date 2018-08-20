@@ -52,8 +52,6 @@ class ListMnt:
         self.comm.on_msg(self._handle_msg)
 
 
-
-
 class ListDisplay(widgets.DOMWidget):
     """An example widget."""
     _view_name = Unicode('HelloView').tag(sync=True)
