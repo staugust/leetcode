@@ -104,10 +104,12 @@ ENV/
 # Augusto
 .idea
 *.iml
+.vscode
 python/.idea
 java/.idea
 java/java.iml
 java/out
-
+cpp/*.exe
+cpp/*.o
 jupyter_skydata/js/dist
 jupyter_skydata/js/node_modules
