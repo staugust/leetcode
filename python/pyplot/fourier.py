@@ -13,7 +13,7 @@ x = np.arange(-5, 5, 0.001);
 # y4 = y1 * 0.3 + y2 * 0.4 + y3 * 0.3
 # plt.plot(x, y4)
 
-arr = [ np.sin(n * x) for n in range(1,100000,2)]
+arr = [ np.sin(n * x) for n in range(1,1000,2)]
 t = np.zeros(len(x))
 for tmp in arr:
     t += tmp
