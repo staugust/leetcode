@@ -32,7 +32,7 @@ public class MoreTask extends TimerTask {
     th.start();
 
     try {
-      Thread.sleep(1000 * 11);]' '
+      Thread.sleep(1000 * 11);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
