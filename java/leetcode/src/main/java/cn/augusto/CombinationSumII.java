@@ -11,7 +11,7 @@ import java.util.Stack;
  * @Date: Created in 15:41 2018/8/27
  */
 public class CombinationSumII {
-  
+
   public List<List<Integer>> combinationSum2(int[] candidates, int target) {
     if (candidates.length == 0) {
       return new ArrayList<List<Integer>>();
@@ -21,6 +21,7 @@ public class CombinationSumII {
     Stack<Integer> stack = new Stack<Integer>();
     stack.push(candidates[0]);
     int sum = candidates[0];
+    int it = 1;
     while (!stack.isEmpty()) {
       if (sum == target) {
         List lst = new ArrayList<Integer>();
@@ -28,9 +29,11 @@ public class CombinationSumII {
           lst.add(i);
         }
       } else if (sum < target) {
-      
+        sum += candidates[it];
+        stack.push(candidates[it++]);
       } else {
-      
+        stack.pop();
+        int last = stack.pop();
       }
     }
     return res;
