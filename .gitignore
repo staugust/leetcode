@@ -113,3 +113,8 @@ cpp/*.exe
 cpp/*.o
 jupyter_skydata/js/dist
 jupyter_skydata/js/node_modules
+
+
+.vs
+*vcxproj*
+*sln*
