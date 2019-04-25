@@ -15,7 +15,7 @@
 
 using namespace std;
 
-//auto Augusto = {]() {std::ios::sync_with_stdio(false); std::cin.tie(NULL); return 0; }();
+//auto Augusto = []() {std::ios::sync_with_stdio(false); std::cin.tie(NULL); return 0; }();
 class Solution201 {
 public:
 	int rangeBitwiseAnd(int m, int n) {

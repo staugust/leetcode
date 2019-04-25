@@ -48,11 +48,11 @@ char* frequencySort(char* s) {
 }
 
 
-int main(void){
-    char * s = (char *)calloc(sizeof(char), 100);
-    memcpy(s,"2a554442f544asfasssffffasss", strlen("2a554442f544asfasssffffasss"));
-    frequencySort(s);
-
-    printf("%s\n",s);
-    system("pause");
-}
+//int main(void){
+//    char * s = (char *)calloc(sizeof(char), 100);
+//    memcpy(s,"2a554442f544asfasssffffasss", strlen("2a554442f544asfasssffffasss"));
+//    frequencySort(s);
+//
+//    printf("%s\n",s);
+//    system("pause");
+//}
